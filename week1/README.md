@@ -7,9 +7,9 @@ Welcome to our data engineering and analytics repository for Nepalese housing ma
 
 ## 👥 Team Directory & Roles
 * 🏃 **Sprint Coordinator:** Shiv Kumar Yadav — Workflow, Trello tracking, review alignment
-* 🐍 **Data Engineer:** *[Insert Name]* — Jupyter notebook scripting & engineering pipelines
-* 🔍 **Analytical Validator:** *[Insert Name]* — Mathematical checks, outlier filters, audit
-* 🏗 **System Designer:** *[Insert Name]* — System architecture, scaling limits, data origins
+* 🐍 **Data Engineer:** *Seraj Haidar Rain* — Jupyter notebook scripting & engineering pipelines
+* 🔍 **Analytical Validator:** *Safal Joshi* — Mathematical checks, outlier filters, audit
+* 🏗 **System Designer:** *Kashyap Adhikari* — System architecture, scaling limits, data origins
 * ✍️ **Documentation Lead:** Ajendra Rai — Workspace architecture & repository markdown translation
 
 ---
