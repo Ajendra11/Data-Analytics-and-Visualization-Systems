@@ -1,0 +1,232 @@
+<!-- ==========================================================
+     FILE: metrics.html
+
+     PURPOSE
+     ----------------------------------------------------------
+     Displays key dataset statistics (KPIs) that summarize the
+     CSV dataset used throughout the Mini Sports Analytics
+     Dashboard.
+
+     Unlike traditional dashboards that display business
+     metrics, this educational dashboard focuses on dataset
+     characteristics that students calculate during the data
+     preprocessing stage.
+
+     Future Improvement:
+     -------------------
+     These values are currently hard-coded for demonstration.
+     Later they will be dynamically loaded using Pandas and
+     Flask.
+
+     Students should learn:
+
+        ✓ Dashboard KPI Cards
+        ✓ Bootstrap Grid System
+        ✓ Information Hierarchy
+        ✓ Dataset Metadata
+        ✓ Responsive Layout
+
+=========================================================== -->
+
+<section class="py-section bg-light-blue">
+
+    <div class="container">
+
+        <!-- =============================================
+             Section Heading
+        ============================================== -->
+
+        <div class="text-center mb-5">
+
+            <span class="hero-badge">
+
+                Dataset Summary
+
+            </span>
+
+            <h2 class="section-title mt-3">
+
+                Explore the Dataset at a Glance
+
+            </h2>
+
+            <p class="section-subtitle">
+
+                Before cleaning, analyzing, and visualizing the
+                data, it is important to understand the structure
+                and quality of the dataset.
+
+            </p>
+
+        </div>
+
+        <!-- =============================================
+             KPI Cards
+        ============================================== -->
+
+        <div class="row g-4">
+
+            <!-- ==========================================
+                 Number of Rows
+            =========================================== -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="metric-card">
+
+                    <i class="bi bi-table card-icon"></i>
+
+                    <div class="metric-value">
+
+                        64
+
+                    </div>
+
+                    <div class="metric-label">
+
+                        Rows
+
+                    </div>
+
+                    <p class="metric-description">
+
+                        Total observations available in the
+                        dataset.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================
+                 Number of Columns
+            =========================================== -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="metric-card">
+
+                    <i class="bi bi-columns-gap card-icon"></i>
+
+                    <div class="metric-value">
+
+                        12
+
+                    </div>
+
+                    <div class="metric-label">
+
+                        Columns
+
+                    </div>
+
+                    <p class="metric-description">
+
+                        Features describing each football match.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================
+                 Missing Values
+            =========================================== -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="metric-card">
+
+                    <i class="bi bi-exclamation-circle card-icon"></i>
+
+                    <div class="metric-value">
+
+                        0
+
+                    </div>
+
+                    <div class="metric-label">
+
+                        Missing Values
+
+                    </div>
+
+                    <p class="metric-description">
+
+                        Total missing records identified during
+                        preprocessing.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================
+                 Duplicate Records
+            =========================================== -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="metric-card">
+
+                    <i class="bi bi-copy card-icon"></i>
+
+                    <div class="metric-value">
+
+                        0
+
+                    </div>
+
+                    <div class="metric-label">
+
+                        Duplicate Rows
+
+                    </div>
+
+                    <p class="metric-description">
+
+                        Duplicate observations detected in the
+                        dataset.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =============================================
+             Educational Note
+        ============================================== -->
+
+        <div class="insight-box mt-5">
+
+            <h5 class="insight-title">
+
+                <i class="bi bi-lightbulb-fill me-2"></i>
+
+                Learning Objective
+
+            </h5>
+
+            <p class="insight-text mb-0">
+
+                These summary statistics are typically computed
+                using the Pandas library before performing
+                Exploratory Data Analysis (EDA). In this project,
+                the values shown above will eventually be
+                generated dynamically from the dataset using
+                Flask and displayed automatically in the
+                dashboard.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>

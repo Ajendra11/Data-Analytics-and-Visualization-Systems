@@ -1,0 +1,255 @@
+/* ==========================================================
+   FILE: workflow.css
+
+   PURPOSE
+   ----------------------------------------------------------
+   Styles the Analytics Workflow section displayed on the
+   homepage.
+
+   The workflow provides users with a visual representation
+   of the complete data analytics pipeline followed in this
+   project.
+
+       Dataset
+          ↓
+   Data Preprocessing
+          ↓
+   Exploratory Data Analysis
+          ↓
+   Statistical Analysis
+          ↓
+   Data Visualization
+          ↓
+   Analytics Dashboard
+
+   Each step represents an important stage in the data
+   analytics process.
+
+   Students should learn:
+   • CSS Flexbox
+   • Responsive layouts
+   • Card-based design
+   • Visual process representation
+   • Consistent spacing and alignment
+
+========================================================== */
+
+
+/* ==========================================================
+   Workflow Section
+
+   Provides vertical spacing between this section and the
+   surrounding sections.
+========================================================== */
+
+.workflow-section{
+
+    background:#ffffff;
+
+}
+
+
+/* ==========================================================
+   Workflow Container
+
+   Uses Flexbox to arrange workflow steps horizontally.
+
+   Flexbox automatically distributes available space among
+   the workflow items, making alignment much easier than
+   traditional CSS layouts.
+========================================================== */
+
+.workflow-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+}
+
+
+/* ==========================================================
+   Individual Workflow Step
+
+   Each workflow step is displayed inside a small card.
+
+   These cards remain visually consistent throughout the
+   application.
+========================================================== */
+
+.workflow-step{
+
+    flex:1;
+
+    min-width:150px;
+
+    background:#ffffff;
+
+    border-radius:16px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(15,23,42,0.05);
+
+    transition:all 0.3s ease;
+
+}
+
+
+/* ==========================================================
+   Workflow Step Hover
+
+   Adds a subtle animation when users move the mouse over
+   a workflow step.
+
+   Small animations improve user experience while keeping
+   the interface professional.
+========================================================== */
+
+.workflow-step:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 35px rgba(15,23,42,0.10);
+
+}
+
+
+/* ==========================================================
+   Workflow Icon
+
+   Represents each stage using an icon.
+
+   Bootstrap Icons will eventually replace placeholder
+   emojis used during development.
+========================================================== */
+
+.workflow-icon{
+
+    font-size:3rem;
+
+    margin-bottom:15px;
+
+    color:#2563eb;
+
+}
+
+
+/* ==========================================================
+   Workflow Title
+
+   Displays the name of each analytics stage.
+========================================================== */
+
+.workflow-title{
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+    margin-bottom:10px;
+
+}
+
+
+/* ==========================================================
+   Workflow Description
+
+   Briefly explains the purpose of each workflow stage.
+
+   Smaller text prevents the cards from becoming visually
+   overwhelming.
+========================================================== */
+
+.workflow-description{
+
+    font-size:0.95rem;
+
+    color:#64748b;
+
+    line-height:1.6;
+
+}
+
+
+/* ==========================================================
+   Workflow Connector
+
+   Displays the arrow connecting two workflow steps.
+
+   Example:
+
+   Dataset  →  Cleaning  →  EDA
+========================================================== */
+
+.workflow-arrow{
+
+    font-size:2rem;
+
+    color:#94a3b8;
+
+    font-weight:700;
+
+}
+
+
+/* ==========================================================
+   Responsive Layout
+
+   On tablets and mobile devices the workflow changes from
+   a horizontal layout to a vertical layout.
+
+   This improves readability and prevents elements from
+   becoming too narrow.
+========================================================== */
+
+@media (max-width:992px){
+
+    .workflow-container{
+
+        flex-direction:column;
+
+    }
+
+    .workflow-arrow{
+
+        transform:rotate(90deg);
+
+    }
+
+}
+
+
+/* ==========================================================
+   Small Screen Adjustments
+
+   Reduces padding and icon sizes on very small devices.
+========================================================== */
+
+@media (max-width:576px){
+
+    .workflow-step{
+
+        width:100%;
+
+        padding:20px;
+
+    }
+
+    .workflow-icon{
+
+        font-size:2.5rem;
+
+    }
+
+}

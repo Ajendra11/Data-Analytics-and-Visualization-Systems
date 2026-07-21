@@ -1,0 +1,142 @@
+<!-- ==========================================================
+     FILE: base.html
+
+     PURPOSE
+     ----------------------------------------------------------
+     Base template for the Mini Sports Analytics Dashboard.
+
+     This template defines the common layout shared by all
+     pages in the application. Individual pages extend this
+     template using Jinja Template Inheritance.
+
+     The layout consists of:
+
+         • HTML Head
+         • CSS Libraries
+         • Global Styles
+         • Navigation Bar
+         • Main Content
+         • Footer
+         • JavaScript Libraries
+
+     Students should learn:
+
+         ✓ Template Inheritance
+         ✓ Jinja Blocks
+         ✓ Component Reusability
+         ✓ Separation of Concerns
+
+     Author:
+     Centre for AI and Emerging Technologies
+     Herald College Kathmandu
+
+========================================================== -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <!-- =============================================
+         Meta Information
+    ============================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Mini Sports Analytics Dashboard built using Flask, Pandas, Matplotlib, and Bootstrap.">
+
+    <meta name="author"
+          content="Centre for AI and Emerging Technologies">
+
+    <!-- =============================================
+         Page Title
+    ============================================== -->
+
+    <title>
+
+        {% block title %}
+
+        Mini Sports Analytics Dashboard
+
+        {% endblock %}
+
+    </title>
+
+    <!-- =============================================
+         Bootstrap CSS
+    ============================================== -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- =============================================
+         Bootstrap Icons
+         (Used later during UI enhancement)
+    ============================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- =============================================
+         Project Stylesheet
+    ============================================== -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block extra_css %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <!-- =============================================
+         Navigation
+    ============================================== -->
+
+    {% include "components/navbar.html" %}
+
+    <!-- =============================================
+         Main Content
+    ============================================== -->
+
+    <main>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+    <!-- =============================================
+         Footer
+    ============================================== -->
+
+    {% include "components/footer.html" %}
+
+    <!-- =============================================
+         Bootstrap JavaScript
+    ============================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- =============================================
+         Project JavaScript
+    ============================================== -->
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+    {% block extra_js %}
+
+    {% endblock %}
+
+</body>
+
+</html>

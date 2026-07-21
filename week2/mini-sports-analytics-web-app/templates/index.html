@@ -1,0 +1,90 @@
+<!-- ==========================================================
+     FILE: index.html
+
+     PURPOSE
+     ----------------------------------------------------------
+     Homepage of the Mini Sports Analytics Dashboard.
+
+     This page assembles reusable UI components to create the
+     landing page of the application.
+
+     Instead of writing one large HTML file, each homepage
+     section is stored as an independent component.
+
+     Homepage Structure
+
+         ⚽ Hero
+         📊 Dataset Metrics
+         🔄 Analytics Workflow
+         🧩 Dashboard Modules
+         🛠️ Technology Stack
+         🚀 Call to Action
+
+     Students should learn:
+
+         ✓ Template Inheritance
+         ✓ Component-Based Development
+         ✓ Modular Project Organization
+         ✓ Jinja Includes
+
+     Author:
+     Centre for AI and Emerging Technologies
+     Herald College Kathmandu
+
+========================================================== -->
+
+{% extends "base.html" %}
+
+<!-- =============================================
+     Browser Title
+============================================== -->
+
+{% block title %}
+
+Mini Sports Analytics Dashboard
+
+{% endblock %}
+
+<!-- =============================================
+     Homepage Content
+============================================== -->
+
+{% block content %}
+
+<!-- =============================================
+     ⚽ Hero Section
+============================================== -->
+
+{% include "components/hero.html" %}
+
+<!-- =============================================
+     📊 Dataset Metrics
+============================================== -->
+
+{% include "components/metrics.html" %}
+
+<!-- =============================================
+     🔄 Analytics Workflow
+============================================== -->
+
+{% include "components/workflow.html" %}
+
+<!-- =============================================
+     🧩 Dashboard Modules
+============================================== -->
+
+{% include "components/feature_cards.html" %}
+
+<!-- =============================================
+     🛠️ Technology Stack
+============================================== -->
+
+{% include "components/technology.html" %}
+
+<!-- =============================================
+     🚀 Call To Action
+============================================== -->
+
+{% include "components/call_to_action.html" %}
+
+{% endblock %}

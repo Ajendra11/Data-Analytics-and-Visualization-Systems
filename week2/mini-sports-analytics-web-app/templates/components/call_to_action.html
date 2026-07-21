@@ -1,0 +1,171 @@
+<!-- ==========================================================
+     FILE: call_to_action.html
+
+     PURPOSE
+     ----------------------------------------------------------
+     Displays the Call-to-Action (CTA) section that concludes
+     the homepage.
+
+     The CTA encourages users to begin exploring the analytics
+     dashboard or browse the project's source code.
+
+     This section demonstrates:
+
+         • Responsive Bootstrap Layout
+         • CTA Design Principles
+         • Information Hierarchy
+         • User Navigation
+
+     Students should learn:
+
+         ✓ Effective Call-to-Action Design
+         ✓ Bootstrap Components
+         ✓ Responsive Web Design
+         ✓ User Experience (UX)
+
+=========================================================== -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+        <div class="cta-card">
+
+            <div class="row align-items-center">
+
+                <!-- ==========================================
+                     Left Side
+                =========================================== -->
+
+                <div class="col-lg-8">
+
+                    <span class="hero-badge">
+
+                        Ready to Explore?
+
+                    </span>
+
+                    <h2 class="cta-title mt-3">
+
+                        Start Your Sports Analytics Journey
+
+                    </h2>
+
+                    <p class="cta-description">
+
+                        Explore the complete analytics workflow,
+                        from data preprocessing to insightful
+                        visualizations, all within a modern Flask
+                        web application designed for learning Data
+                        Analytics and Visualization Systems.
+
+                    </p>
+
+                    <!-- ======================================
+                         Feature Highlights
+                    ======================================= -->
+
+                    <div class="row mt-4">
+
+                        <div class="col-md-6">
+
+                            <p>
+
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+
+                                Data Cleaning & Preparation
+
+                            </p>
+
+                            <p>
+
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+
+                                Exploratory Data Analysis
+
+                            </p>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <p>
+
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+
+                                Statistical Analysis
+
+                            </p>
+
+                            <p>
+
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+
+                                Dashboard Visualizations
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ==========================================
+                     Right Side
+                =========================================== -->
+
+                <div class="col-lg-4 text-center">
+
+                    <div class="dashboard-card">
+
+                        <i class="bi bi-rocket-takeoff-fill display-3 text-primary"></i>
+
+                        <h4 class="mt-4">
+
+                            Let's Begin
+
+                        </h4>
+
+                        <p>
+
+                            Start exploring the dashboard and
+                            discover how sports data becomes
+                            meaningful insights.
+
+                        </p>
+
+                        <div class="d-grid gap-3 mt-4">
+
+                            <a href="{{ url_for('main.preprocessing') }}"
+                               class="btn btn-primary-custom btn-lg-custom">
+
+                                <i class="bi bi-speedometer2 me-2"></i>
+
+                                Explore Dashboard
+
+                            </a>
+
+                            <a href="#"
+
+                               class="btn btn-outline-primary btn-lg">
+
+                                <i class="bi bi-github me-2"></i>
+
+                                View GitHub Repository
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

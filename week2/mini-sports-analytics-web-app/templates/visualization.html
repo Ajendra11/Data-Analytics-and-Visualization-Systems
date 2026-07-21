@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}
+Visualizations | Mini Sports Analytics Web App
+{% endblock %}
+
+{% block content %}
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="container my-4">
+    <h1 class="mb-2">📈 Interactive Analytics Studio</h1>
+    <p class="lead text-muted">
+        Customize metrics, switch chart types dynamically, and filter World Cup data in real-time without page reloads.
+    </p>
+
+    <!-- Interactive Control Panel -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body bg-light rounded py-3">
+            <div class="row g-3 align-items-center">
+                
+                <!-- 1. Metric Selector -->
+                <div class="col-md-4">
+                    <label for="metricSelect" class="form-label fw-bold mb-1">🎯 Select Metric:</label>
+                    <select id="metricSelect" class="form-select">
+                        <option value="matches_per_year" selected>📅 Matches Played per Year</option>
+                        <option value="top_teams">⚽ Top Participating Teams</option>
+                        <option value="stage_distribution">🏆 Tournament Stage Distribution</option>
+                    </select>
+                </div>
+
+                <!-- 2. Chart Type Selector -->
+                <div class="col-md-4">
+                    <label for="chartTypeSelect" class="form-label fw-bold mb-1">📊 Chart Type:</label>
+                    <select id="chartTypeSelect" class="form-select">
+                        <option value="bar">Bar Chart</option>
+                        <option value="line" selected>Line Chart</option>
+                        <option value="doughnut">Doughnut Chart</option>
+                        <option value="pie">Pie Chart</option>
+                    </select>
+                </div>
+
+                <!-- 3. Dynamic Year Filter -->
+                <div class="col-md-4">
+                    <label for="apiYearFilter" class="form-label fw-bold mb-1">🗓️ World Cup Edition:</label>
+                    <select id="apiYearFilter" class="form-select">
+                        <option value="">All Editions Combined</option>
+                        <option value="2022">2022 FIFA World Cup</option>
+                        <option value="2018">2018 FIFA World Cup</option>
+                        <option value="2014">2014 FIFA World Cup</option>
+                        <option value="2010">2010 FIFA World Cup</option>
+                        <option value="2006">2006 FIFA World Cup</option>
+                        <option value="2002">2002 FIFA World Cup</option>
+                        <option value="1998">1998 FIFA World Cup</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dynamic Chart Container -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+            <h5 class="mb-0 fw-bold" id="chartTitle">📅 Matches Played per Year</h5>
+            <span class="badge bg-primary rounded-pill px-3 py-2" id="liveBadge">Live AJAX Data</span>
+        </div>
+        <div class="card-body p-4" style="position: relative; height: 420px;">
+            <canvas id="dynamicStudioChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript to handle dynamic Fetch requests and Chart re-renders -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let activeChart = null;
+
+        const metricSelect = document.getElementById("metricSelect");
+        const chartTypeSelect = document.getElementById("chartTypeSelect");
+        const yearFilter = document.getElementById("apiYearFilter");
+        const chartTitle = document.getElementById("chartTitle");
+
+        // Color palettes for multi-slice charts
+        const chartColors = [
+            '#0d6efd', '#198754', '#ffc107', '#0dcaf0', 
+            '#6c757d', '#6610f2', '#fd7e14', '#d63384',
+            '#20c997', '#0dcaf0'
+        ];
+
+        // 1. Fetch JSON data asynchronously from backend API
+        async function fetchChartData(year) {
+            const url = year ? `/api/kpis?year=${year}` : '/api/kpis';
+            try {
+                const response = await fetch(url);
+                const json = await response.json();
+                return json.status === "success" ? json.data : null;
+            } catch (err) {
+                console.error("Error fetching KPI data:", err);
+                return null;
+            }
+        }
+
+        // 2. Render / Update Chart dynamically
+        async function renderDynamicChart() {
+            const selectedYear = yearFilter.value;
+            const selectedMetric = metricSelect.value;
+            const selectedChartType = chartTypeSelect.value;
+
+            const apiData = await fetchChartData(selectedYear);
+            if (!apiData) return;
+
+            let labels = [];
+            let datasetValues = [];
+            let datasetLabel = "";
+
+            // Extract relevant metrics based on user selection
+            if (selectedMetric === "matches_per_year") {
+                const matches = apiData.temporal_kpis?.matches_per_year || {};
+                labels = Object.keys(matches);
+                datasetValues = Object.values(matches);
+                datasetLabel = "Matches Played";
+                chartTitle.innerText = selectedYear ? `📅 Matches Played in ${selectedYear}` : "📅 Matches Played per Tournament Year";
+            } else if (selectedMetric === "top_teams") {
+                const teams = apiData.team_kpis?.top_teams || {};
+                
+                // Sort teams strictly by match count descending
+                const sortedTeams = Object.entries(teams).sort((a, b) => b[1] - a[1]);
+                
+                labels = sortedTeams.map(item => item[0]);
+                datasetValues = sortedTeams.map(item => item[1]);
+                datasetLabel = "Matches Played by Team";
+                chartTitle.innerText = "⚽ Top Participating Teams";
+            } else if (selectedMetric === "stage_distribution") {
+                const stages = apiData.competition_kpis?.stage_distribution || {};
+                
+                // Sort stages strictly by match count descending
+                const sortedStages = Object.entries(stages).sort((a, b) => b[1] - a[1]);
+                
+                labels = sortedStages.map(item => item[0]);
+                datasetValues = sortedStages.map(item => item[1]);
+                datasetLabel = "Matches in Stage";
+                chartTitle.innerText = "🏆 Match Distribution by Tournament Stage";
+            }
+
+            // Destroy existing chart instance before drawing a new one
+            if (activeChart) {
+                activeChart.destroy();
+            }
+
+            // Configure Dataset Styling
+            const isPieOrDoughnut = ['pie', 'doughnut'].includes(selectedChartType);
+            const datasetConfig = {
+                label: datasetLabel,
+                data: datasetValues,
+                backgroundColor: isPieOrDoughnut ? chartColors : 'rgba(13, 110, 253, 0.75)',
+                borderColor: isPieOrDoughnut ? '#ffffff' : 'rgba(13, 110, 253, 1)',
+                borderWidth: isPieOrDoughnut ? 2 : 1,
+                fill: selectedChartType === 'line',
+                tension: 0.3
+            };
+
+            // Render Chart on Canvas
+            const ctx = document.getElementById('dynamicStudioChart').getContext('2d');
+            activeChart = new Chart(ctx, {
+                type: selectedChartType,
+                data: {
+                    labels: labels,
+                    datasets: [datasetConfig]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: isPieOrDoughnut,
+                            position: 'bottom'
+                        }
+                    },
+                    scales: isPieOrDoughnut ? {} : {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        // 3. Attach Event Listeners to Control Inputs
+        metricSelect.addEventListener("change", renderDynamicChart);
+        chartTypeSelect.addEventListener("change", renderDynamicChart);
+        yearFilter.addEventListener("change", renderDynamicChart);
+
+        // Initial Load
+        renderDynamicChart();
+    });
+</script>
+
+{% endblock %}

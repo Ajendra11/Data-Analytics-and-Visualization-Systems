@@ -1,0 +1,38 @@
+/* ==========================================================
+   FILE: style.css
+
+   PURPOSE
+   ----------------------------------------------------------
+   This is the main stylesheet for the Mini Sports Analytics
+   Dashboard.
+
+   Rather than placing every CSS rule in a single file,
+   the styles are divided into multiple smaller files,
+   each with a specific responsibility.
+
+   This approach demonstrates one of the core principles of
+   software engineering:
+
+       Separation of Concerns
+
+   Each imported file focuses on a single part of the user
+   interface, making the project easier to understand,
+   maintain, and extend.
+
+   Students should learn:
+   • Organizing CSS into modules
+   • Building scalable web applications
+   • Maintaining clean project architecture
+
+========================================================== */
+
+@import url("base.css");
+@import url("navbar.css");
+@import url("hero.css");
+@import url("workflow.css");
+@import url("dashboard.css");
+@import url("cards.css");
+@import url("buttons.css");
+@import url("footer.css");
+@import url("utilities.css");
+@import url("pages/home.css");

@@ -1,0 +1,108 @@
+/* ==========================================================
+   FILE: pages/home.css
+
+   PURPOSE
+   ----------------------------------------------------------
+   Contains styles used exclusively on the homepage.
+
+   The homepage combines multiple reusable components
+   including:
+
+       • Hero
+       • Workflow
+       • Metrics
+       • Feature Cards
+       • Technology Stack
+       • Call To Action
+
+   Page-specific styles belong here instead of the global
+   stylesheets.
+
+   Students should learn:
+   • Modular CSS
+   • Page-specific styling
+   • Separation of concerns
+
+========================================================== */
+
+
+/* ==========================================================
+   Alternate Background Sections
+
+   Creates visual separation between homepage sections.
+========================================================== */
+
+.section-light{
+
+    background:#f8fafc;
+
+}
+
+
+.section-white{
+
+    background:#ffffff;
+
+}
+
+
+/* ==========================================================
+   Homepage Statistics
+========================================================== */
+
+.home-stat{
+
+    text-align:center;
+
+}
+
+
+.home-stat-number{
+
+    font-size:3rem;
+
+    font-weight:700;
+
+    color:#2563eb;
+
+}
+
+
+.home-stat-label{
+
+    color:#64748b;
+
+    font-weight:500;
+
+}
+
+
+
+
+/* ==========================================================
+   Call To Action Section
+========================================================== */
+
+.cta-section{
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:#ffffff;
+
+    border-radius:25px;
+
+}
+
+
+.cta-section h2{
+
+    color:#ffffff;
+
+}
+
+
+.cta-section p{
+
+    color:#dbeafe;
+
+}

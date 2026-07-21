@@ -1,0 +1,96 @@
+/* ==========================================================
+   FILE: footer.css
+
+   PURPOSE
+   ----------------------------------------------------------
+   Defines the appearance of the website footer.
+
+   The footer provides additional information about the
+   project and remains consistent across every page.
+
+   Students should learn:
+   • Website layout
+   • Typography
+   • Color contrast
+   • Footer design
+
+========================================================== */
+
+
+/* Footer Container */
+
+.footer{
+
+    background:#0f172a;
+
+    color:#f8fafc;
+
+    padding:60px 0 30px;
+
+}
+
+
+/* Footer Title */
+
+.footer-title{
+
+    font-size:1.5rem;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+
+/* Footer Text */
+
+.footer-text{
+
+    color:#cbd5e1;
+
+    line-height:1.8;
+
+}
+
+
+/* Footer Links */
+
+.footer a{
+
+    color:#cbd5e1;
+
+    transition:.30s;
+
+}
+
+
+.footer a:hover{
+
+    color:#60a5fa;
+
+}
+
+
+/* Footer Divider */
+
+.footer hr{
+
+    border-color:#334155;
+
+    margin:30px 0;
+
+}
+
+
+/* Copyright */
+
+.footer-copyright{
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    font-size:.90rem;
+
+}

@@ -1,0 +1,116 @@
+/* ==========================================================
+   FILE: buttons.css
+
+   PURPOSE
+   ----------------------------------------------------------
+   Defines reusable button styles used throughout the
+   Mini Sports Analytics Dashboard.
+
+   Buttons are one of the most important interactive
+   components in a web application. They guide users toward
+   important actions such as navigating between pages,
+   exploring analytics modules, or viewing visualizations.
+
+   Students should learn:
+   • Customizing Bootstrap buttons
+   • Hover animations
+   • Consistent user interface design
+   • Interactive elements
+
+========================================================== */
+
+
+/* ==========================================================
+   Primary Button
+
+   Used for the application's main actions.
+========================================================== */
+
+.btn-primary-custom{
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:12px 28px;
+
+    font-weight:600;
+
+    transition:all .30s ease;
+
+}
+
+
+.btn-primary-custom:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(37,99,235,.25);
+
+}
+
+
+/* ==========================================================
+   Secondary Button
+
+   Used for secondary actions.
+========================================================== */
+
+.btn-secondary-custom{
+
+    background:#ffffff;
+
+    color:#2563eb;
+
+    border:2px solid #2563eb;
+
+    border-radius:10px;
+
+    padding:12px 28px;
+
+    font-weight:600;
+
+    transition:all .30s ease;
+
+}
+
+
+.btn-secondary-custom:hover{
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+}
+
+
+/* ==========================================================
+   Large Button
+========================================================== */
+
+.btn-lg-custom{
+
+    padding:15px 35px;
+
+    font-size:1.05rem;
+
+}
+
+
+/* ==========================================================
+   Small Button
+========================================================== */
+
+.btn-sm-custom{
+
+    padding:8px 18px;
+
+    font-size:.90rem;
+
+}

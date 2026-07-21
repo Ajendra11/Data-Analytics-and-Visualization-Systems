@@ -1,0 +1,157 @@
+<!-- ==========================================================
+     FILE: navbar.html
+
+     PURPOSE
+     ----------------------------------------------------------
+     This file defines the navigation bar for the Mini Sports
+     Analytics Dashboard.
+
+     The navigation bar is shared across all pages
+     using a Jinja include statement defined in
+     base.html.
+
+     Using reusable components avoids duplicating HTML code
+     across multiple templates and makes the application
+     easier to maintain.
+
+     Students should learn:
+     • Bootstrap Navigation Bar
+     • Flask url_for()
+     • Responsive navigation
+     • Component-based web development
+
+=========================================================== -->
+
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+
+    <div class="container">
+
+        <!-- ==================================================
+             Project Logo / Brand
+        =================================================== -->
+
+        <a class="navbar-brand" href="{{ url_for('main.home') }}">
+
+            ⚽ Mini Sports Analytics Dashboard
+
+        </a>
+
+
+        <!-- ==================================================
+             Mobile Navigation Toggle Button
+
+             Appears automatically on smaller screens.
+        =================================================== -->
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- ==================================================
+             Navigation Links
+        =================================================== -->
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       href="{{ url_for('main.home') }}">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('main.preprocessing') }}">
+
+                        Data Preprocessing
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('main.eda') }}">
+
+                        EDA
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('main.statistics') }}">
+
+                        Statistics
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('main.visualizations') }}">
+
+                        Visualizations
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('main.about') }}">
+
+                        About
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- ==================================================
+                 Right Side Button
+            =================================================== -->
+
+            <a href="#"
+
+               class="btn btn-primary-custom ms-lg-4">
+
+                Explore Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>

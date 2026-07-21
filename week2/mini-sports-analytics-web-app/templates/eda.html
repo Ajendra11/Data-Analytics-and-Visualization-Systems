@@ -1,0 +1,329 @@
+{% extends "base.html" %}
+
+{% block title %}
+EDA | Mini Sports Analytics Web App
+{% endblock %}
+
+{% block content %}
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="container my-4">
+    <h1 class="mb-2">📊 Exploratory Data Analysis</h1>
+    <p class="lead text-muted">
+        Explore summary statistics, interactive visual breakdowns, and venue metrics dynamically calculated from your cleaned dataset.
+    </p>
+
+    <!-- Dynamic Year Filter Form -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body bg-light rounded py-3">
+            <form method="GET" action="{{ url_for('main.eda') }}" class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="year" class="col-form-label fw-bold">🗓️ Select Edition Year:</label>
+                </div>
+                <div class="col-auto">
+                    <select name="year" id="year" class="form-select">
+                        <option value="" {% if not selected_year %}selected{% endif %}>All World Cup Editions</option>
+                        {% for yr in available_years %}
+                            <option value="{{ yr }}" {% if selected_year == yr %}selected{% endif %}>
+                                {{ yr }} FIFA World Cup
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                    {% if selected_year %}
+                        <a href="{{ url_for('main.eda') }}" class="btn btn-outline-secondary">Clear Filter</a>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Top KPI Cards -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-primary text-white p-3">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 opacity-75">Total Matches</h6>
+                    <h2 class="card-title fw-bold mb-0">{{ report.tournament_kpis.total_matches if report and report.tournament_kpis else 0 }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-success text-white p-3">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 opacity-75">Total Teams</h6>
+                    <h2 class="card-title fw-bold mb-0">{{ report.tournament_kpis.total_teams if report and report.tournament_kpis else 0 }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-warning text-dark p-3">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 opacity-75">Host Stadiums</h6>
+                    <h2 class="card-title fw-bold mb-0">{{ report.tournament_kpis.total_stadiums if report and report.tournament_kpis else 0 }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-info text-white p-3">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 opacity-75">Host Cities</h6>
+                    <h2 class="card-title fw-bold mb-0">{{ report.tournament_kpis.total_cities if report and report.tournament_kpis else 0 }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Visualizations -->
+    <div class="row g-4 mb-4">
+        <!-- Top Teams Bar Chart -->
+        <div class="col-md-7">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white fw-bold py-3">
+                    📈 Top Participating Teams (Interactive)
+                </div>
+                <div class="card-body">
+                    <canvas id="teamsBarChart" style="max-height: 300px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage Distribution Doughnut Chart -->
+        <div class="col-md-5">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white fw-bold py-3">
+                    🍩 Stage Distribution
+                </div>
+                <div class="card-body text-center">
+                    <canvas id="stageDoughnutChart" style="max-height: 300px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Breakdown Tables -->
+    <div class="row g-4 mb-4">
+        <!-- Top Participating Teams Table -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white fw-bold py-3">
+                    ⚽ Top Teams Table
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Team</th>
+                                <th class="text-end">Matches Played</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if report and report.team_kpis and report.team_kpis.top_teams %}
+                                {% for team, count in report.team_kpis.top_teams.items() %}
+                                <tr>
+                                    <td class="fw-semibold">{{ team }}</td>
+                                    <td class="text-end"><span class="badge bg-primary rounded-pill">{{ count }}</span></td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="2" class="text-center text-muted py-3">No team data available</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Matches Distribution by Stage Table -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white fw-bold py-3">
+                    🏆 Tournament Stage Table
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Stage</th>
+                                <th class="text-end">Matches</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if report and report.competition_kpis and report.competition_kpis.stage_distribution %}
+                                {% for stage, count in report.competition_kpis.stage_distribution.items() %}
+                                <tr>
+                                    <td class="fw-semibold">{{ stage }}</td>
+                                    <td class="text-end"><span class="badge bg-secondary rounded-pill">{{ count }}</span></td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="2" class="text-center text-muted py-3">No stage data available</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Venue Breakdown with Inline Progress Bars -->
+    <div class="row g-4 mb-4">
+        <!-- Top Host Stadiums -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white fw-bold py-3">
+                    🏟️ Top Host Stadiums
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Stadium Name</th>
+                                <th class="text-end">Matches Hosted</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if report and report.venue_kpis and report.venue_kpis.top_stadiums %}
+                                {% set max_stadium = report.venue_kpis.top_stadiums.values()|list|max if report.venue_kpis.top_stadiums else 1 %}
+                                {% for stadium, count in report.venue_kpis.top_stadiums.items() %}
+                                <tr>
+                                    <td class="fw-semibold text-truncate" style="max-width: 180px;">{{ stadium }}</td>
+                                    <td class="text-end" style="width: 45%;">
+                                        <div class="d-flex align-items-center justify-content-end gap-2">
+                                            <div class="progress flex-grow-1" style="height: 6px;">
+                                                <div class="progress-bar bg-primary" style="width: {{ (count / max_stadium * 100)|round }}%;"></div>
+                                            </div>
+                                            <span class="badge bg-primary rounded-pill">{{ count }}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="2" class="text-center text-muted py-3">No venue data available</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Matches Hosted by City -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white fw-bold py-3">
+                    📍 Matches Hosted by City
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>City</th>
+                                <th class="text-end">Matches Hosted</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if report and report.venue_kpis and report.venue_kpis.top_cities %}
+                                {% set max_city = report.venue_kpis.top_cities.values()|list|max if report.venue_kpis.top_cities else 1 %}
+                                {% for city, count in report.venue_kpis.top_cities.items() %}
+                                <tr>
+                                    <td class="fw-semibold">{{ city }}</td>
+                                    <td class="text-end" style="width: 45%;">
+                                        <div class="d-flex align-items-center justify-content-end gap-2">
+                                            <div class="progress flex-grow-1" style="height: 6px;">
+                                                <div class="progress-bar bg-info" style="width: {{ (count / max_city * 100)|round }}%;"></div>
+                                            </div>
+                                            <span class="badge bg-info text-white rounded-pill">{{ count }}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="2" class="text-center text-muted py-3">No city data available</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript to Render Chart.js Plots -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Safely parse Jinja context as native JS objects using | tojson
+        const topTeamsRaw = {{ (report.team_kpis.top_teams if report and report.team_kpis and report.team_kpis.top_teams else {}) | tojson }};
+        const stageDistRaw = {{ (report.competition_kpis.stage_distribution if report and report.competition_kpis and report.competition_kpis.stage_distribution else {}) | tojson }};
+
+        // Explicitly sort entries by count descending
+        const sortedTeams = Object.entries(topTeamsRaw).sort((a, b) => b[1] - a[1]);
+        const sortedStages = Object.entries(stageDistRaw).sort((a, b) => b[1] - a[1]);
+
+        // Extract sorted labels and dataset values
+        const teamLabels = sortedTeams.map(item => item[0]);
+        const teamCounts = sortedTeams.map(item => item[1]);
+
+        const stageLabels = sortedStages.map(item => item[0]);
+        const stageCounts = sortedStages.map(item => item[1]);
+
+        // 1. Render Top Teams Bar Chart
+        if (teamLabels.length > 0) {
+            new Chart(document.getElementById('teamsBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: teamLabels,
+                    datasets: [{
+                        label: 'Matches Played',
+                        data: teamCounts,
+                        backgroundColor: 'rgba(13, 110, 253, 0.75)',
+                        borderColor: 'rgba(13, 110, 253, 1)',
+                        borderWidth: 1,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
+
+        // 2. Render Stage Doughnut Chart
+        if (stageLabels.length > 0) {
+            new Chart(document.getElementById('stageDoughnutChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: stageLabels,
+                    datasets: [{
+                        data: stageCounts,
+                        backgroundColor: [
+                            '#0d6efd', '#198754', '#ffc107', '#0dcaf0', 
+                            '#6c757d', '#6610f2', '#fd7e14', '#d63384'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+    });
+</script>
+
+{% endblock %}

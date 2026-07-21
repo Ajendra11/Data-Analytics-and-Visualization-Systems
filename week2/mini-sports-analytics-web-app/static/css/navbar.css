@@ -1,0 +1,209 @@
+/* ==========================================================
+   FILE: navbar.css
+
+   PURPOSE
+   ----------------------------------------------------------
+   Defines the appearance and behavior of the website's
+   navigation bar.
+
+   The navigation bar is one of the most important user
+   interface components because it allows users to navigate
+   between different sections of the application.
+
+   A well-designed navigation bar should be:
+       • Easy to read
+       • Consistent across all pages
+       • Responsive on different screen sizes
+       • Visually aligned with the application's branding
+
+   This stylesheet customizes Bootstrap's default navigation
+   bar to match the look and feel of the Mini Sports
+   Analytics Dashboard.
+
+   Students should learn:
+   • Customizing Bootstrap components
+   • Navigation styling
+   • Hover effects
+   • Visual hierarchy
+   • User experience (UX)
+
+========================================================== */
+
+
+/* ==========================================================
+   Navigation Bar Container
+
+   The navbar acts as the main navigation area for the
+   application.
+
+   We use a white background with a subtle shadow to create
+   separation from the page content while maintaining a
+   clean and modern appearance.
+========================================================== */
+
+.navbar{
+
+    background-color:#ffffff;
+
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+
+    padding:15px 0;
+
+}
+
+
+/* ==========================================================
+   Brand (Application Name)
+
+   The brand represents the identity of the application.
+
+   Increasing the font size and weight helps establish
+   visual importance and improves recognition.
+========================================================== */
+
+.navbar-brand{
+
+    font-size:1.5rem;
+
+    font-weight:700;
+
+    color:#0f172a !important;
+
+    letter-spacing:0.5px;
+
+}
+
+
+/* ==========================================================
+   Navigation Links
+
+   These links allow users to navigate between different
+   analytics modules.
+
+   We use medium font weight and consistent spacing for
+   better readability.
+========================================================== */
+
+.navbar-nav .nav-link{
+
+    color:#475569;
+
+    font-weight:500;
+
+    margin-left:10px;
+
+    margin-right:10px;
+
+    transition:all 0.3s ease;
+
+}
+
+
+/* ==========================================================
+   Navigation Hover Effect
+
+   When the mouse pointer moves over a navigation link,
+   its color changes to the primary theme color.
+
+   This provides visual feedback that the link is
+   interactive.
+========================================================== */
+
+.navbar-nav .nav-link:hover{
+
+    color:#2563eb;
+
+}
+
+
+/* ==========================================================
+   Active Navigation Link
+
+   The active page should be visually distinguished from
+   the remaining navigation links.
+
+   This helps users understand where they currently are
+   within the application.
+========================================================== */
+
+.navbar-nav .nav-link.active{
+
+    color:#2563eb;
+
+    font-weight:700;
+
+}
+
+
+/* ==========================================================
+   Navigation Buttons
+
+   Some navigation items may appear as buttons
+   (e.g., GitHub, Dashboard).
+
+   A slightly rounded border provides a modern appearance.
+========================================================== */
+
+.navbar .btn{
+
+    border-radius:10px;
+
+    padding:8px 18px;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================================
+   Sticky Navigation
+
+   Keeping the navigation bar fixed at the top allows
+   users to access it while scrolling.
+
+   The z-index ensures the navbar always appears above
+   other page elements.
+========================================================== */
+
+.sticky-top{
+
+    z-index:1020;
+
+}
+
+
+/* ==========================================================
+   Responsive Navigation
+
+   On smaller screens, Bootstrap collapses the navigation
+   into a mobile menu.
+
+   These styles improve spacing and readability when the
+   navigation is expanded on mobile devices.
+========================================================== */
+
+@media (max-width:991px){
+
+    .navbar-nav{
+
+        margin-top:20px;
+
+        text-align:center;
+
+    }
+
+    .navbar-nav .nav-link{
+
+        margin:10px 0;
+
+    }
+
+    .navbar .btn{
+
+        margin-top:15px;
+
+        width:100%;
+
+    }
+
+}

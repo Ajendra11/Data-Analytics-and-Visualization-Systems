@@ -1,0 +1,324 @@
+<!-- ==========================================================
+     FILE: feature_cards.html
+
+     PURPOSE
+     ----------------------------------------------------------
+     Displays the main modules of the Mini Sports Analytics
+     Dashboard.
+
+     Each card represents a functional component of the
+     application and introduces students to the analytics
+     features they will develop throughout the course.
+
+     In future versions, each card will navigate to its
+     corresponding Flask page.
+
+     Students should learn:
+
+         ✓ Bootstrap Cards
+         ✓ Responsive Grid Layout
+         ✓ Information Architecture
+         ✓ Component-based UI Design
+         ✓ Flask Navigation
+
+=========================================================== -->
+
+<section class="features-section">
+
+    <div class="container">
+
+        <!-- =============================================
+             Section Heading
+        ============================================== -->
+
+        <div class="text-center mb-5">
+
+            <span class="hero-badge">
+
+                Dashboard Modules
+
+            </span>
+
+            <h2 class="section-title mt-3">
+
+                Explore Every Stage of Sports Analytics
+
+            </h2>
+
+            <p class="section-subtitle">
+
+                The dashboard is organized into multiple modules,
+                each representing an important step in the data
+                analytics lifecycle.
+
+            </p>
+
+        </div>
+
+
+        <!-- =============================================
+             Dashboard Modules
+        ============================================== -->
+
+        <div class="row g-4">
+
+            <!-- ==========================================
+                 Data Preprocessing
+            =========================================== -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <a href="{{ url_for('main.preprocessing') }}" class="text-decoration-none">
+
+                    <div class="dashboard-card h-100">
+
+                        <div class="card-icon">
+
+                            <i class="bi bi-database-fill-gear"></i>
+
+                        </div>
+
+                        <h4>
+
+                            Data Preprocessing
+
+                        </h4>
+
+                        <p>
+
+                            Prepare the dataset by handling missing
+                            values, duplicates, inconsistent records,
+                            and incorrect data types before analysis.
+
+                        </p>
+
+                        <span class="feature-link">
+
+                            Explore Module →
+
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==========================================
+                 Exploratory Data Analysis
+            =========================================== -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <a href="{{ url_for('main.eda') }}" class="text-decoration-none">
+
+                    <div class="dashboard-card h-100">
+
+                        <div class="card-icon">
+
+                            <i class="bi bi-search"></i>
+
+                        </div>
+
+                        <h4>
+
+                            Exploratory Data Analysis
+
+                        </h4>
+
+                        <p>
+
+                            Discover trends, distributions,
+                            correlations, and patterns through
+                            descriptive statistics and visual
+                            exploration.
+
+                        </p>
+
+                        <span class="feature-link">
+
+                            Explore Module →
+
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==========================================
+                 Statistical Analysis
+            =========================================== -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <a href="{{ url_for('main.statistics') }}" class="text-decoration-none">
+
+                    <div class="dashboard-card h-100">
+
+                        <div class="card-icon">
+
+                            <i class="bi bi-calculator-fill"></i>
+
+                        </div>
+
+                        <h4>
+
+                            Statistical Analysis
+
+                        </h4>
+
+                        <p>
+
+                            Compute descriptive statistics,
+                            summarize numerical variables,
+                            and investigate relationships
+                            within the dataset.
+
+                        </p>
+
+                        <span class="feature-link">
+
+                            Explore Module →
+
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==========================================
+                 Visualizations
+            =========================================== -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <a href="{{ url_for('main.visualizations') }}" class="text-decoration-none">
+
+                    <div class="dashboard-card h-100">
+
+                        <div class="card-icon">
+
+                            <i class="bi bi-bar-chart-fill"></i>
+
+                        </div>
+
+                        <h4>
+
+                            Data Visualizations
+
+                        </h4>
+
+                        <p>
+
+                            Communicate findings through
+                            professional static charts created
+                            with Matplotlib and Seaborn.
+
+                        </p>
+
+                        <span class="feature-link">
+
+                            Explore Module →
+
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- ==========================================
+                 Dashboard
+            =========================================== -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="dashboard-card h-100">
+
+                    <div class="card-icon">
+
+                        <i class="bi bi-speedometer2"></i>
+
+                    </div>
+
+                    <h4>
+
+                        Interactive Dashboard
+
+                    </h4>
+
+                    <p>
+
+                        Bring together dataset summaries,
+                        analytics results, and visualizations
+                        into a unified web application.
+
+                    </p>
+
+                    <span class="feature-link">
+
+                        Coming Soon
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================================
+                 About
+            =========================================== -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <a href="{{ url_for('main.about') }}" class="text-decoration-none">
+
+                    <div class="dashboard-card h-100">
+
+                        <div class="card-icon">
+
+                            <i class="bi bi-info-circle-fill"></i>
+
+                        </div>
+
+                        <h4>
+
+                            About the Project
+
+                        </h4>
+
+                        <p>
+
+                            Learn about the project goals,
+                            technology stack, development
+                            process, and educational objectives.
+
+                        </p>
+
+                        <span class="feature-link">
+
+                            Learn More →
+
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

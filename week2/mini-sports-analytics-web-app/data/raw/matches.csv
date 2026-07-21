@@ -1,0 +1,65 @@
+year,date,stage,stadium,city,home_team,away_team,home_score,away_score,tournament
+2022,2022-11-20,Group Stage,Al Bayt Stadium,Al Khor,Qatar,Ecuador,0,2,FIFA World Cup 2022
+2022,2022-11-21,Group Stage,Khalifa International Stadium,Al Rayyan,England,Iran,6,2,FIFA World Cup 2022
+2022,2022-11-21,Group Stage,Al Thumama Stadium,Doha,Senegal,Netherlands,0,2,FIFA World Cup 2022
+2022,2022-11-21,Group Stage,Ahmad Bin Ali Stadium,Al Rayyan,United States,Wales,1,1,FIFA World Cup 2022
+2022,2022-11-22,Group Stage,Lusail Stadium,Lusail,Argentina,Saudi Arabia,1,2,FIFA World Cup 2022
+2022,2022-11-22,Group Stage,Education City Stadium,Al Rayyan,Denmark,Tunisia,0,0,FIFA World Cup 2022
+2022,2022-11-22,Group Stage,Stadium 974,Doha,Mexico,Poland,0,0,FIFA World Cup 2022
+2022,2022-11-22,Group Stage,Al Janoub Stadium,Al Wakrah,France,Australia,4,1,FIFA World Cup 2022
+2022,2022-11-23,Group Stage,Al Thumama Stadium,Doha,Spain,Costa Rica,7,0,FIFA World Cup 2022
+2022,2022-11-23,Group Stage,Ahmad Bin Ali Stadium,Al Rayyan,Germany,Japan,1,2,FIFA World Cup 2022
+2022,2022-11-23,Group Stage,Khalifa International Stadium,Al Rayyan,Morocco,Croatia,0,0,FIFA World Cup 2022
+2022,2022-11-23,Group Stage,Al Bayt Stadium,Al Khor,Belgium,Canada,1,0,FIFA World Cup 2022
+2022,2022-11-24,Group Stage,Al Janoub Stadium,Al Wakrah,Switzerland,Cameroon,1,0,FIFA World Cup 2022
+2022,2022-11-24,Group Stage,Lusail Stadium,Lusail,Uruguay,South Korea,0,0,FIFA World Cup 2022
+2022,2022-11-24,Group Stage,Education City Stadium,Al Rayyan,Portugal,Ghana,3,2,FIFA World Cup 2022
+2022,2022-11-24,Group Stage,Stadium 974,Doha,Brazil,Serbia,2,0,FIFA World Cup 2022
+2022,2022-11-25,Group Stage,Ahmad Bin Ali Stadium,Al Rayyan,Wales,Iran,0,2,FIFA World Cup 2022
+2022,2022-11-25,Group Stage,Al Thumama Stadium,Doha,Qatar,Senegal,1,3,FIFA World Cup 2022
+2022,2022-11-25,Group Stage,Khalifa International Stadium,Al Rayyan,Netherlands,Ecuador,1,1,FIFA World Cup 2022
+2022,2022-11-25,Group Stage,Al Bayt Stadium,Al Khor,England,United States,0,0,FIFA World Cup 2022
+2022,2022-11-26,Group Stage,Stadium 974,Doha,Tunisia,Australia,0,1,FIFA World Cup 2022
+2022,2022-11-26,Group Stage,Education City Stadium,Al Rayyan,Poland,Saudi Arabia,2,0,FIFA World Cup 2022
+2022,2022-11-26,Group Stage,Lusail Stadium,Lusail,Argentina,Mexico,2,0,FIFA World Cup 2022
+2022,2022-11-26,Group Stage,Al Janoub Stadium,Al Wakrah,France,Denmark,2,1,FIFA World Cup 2022
+2022,2022-11-27,Group Stage,Ahmad Bin Ali Stadium,Al Rayyan,Japan,Costa Rica,0,1,FIFA World Cup 2022
+2022,2022-11-27,Group Stage,Al Thumama Stadium,Doha,Belgium,Morocco,0,2,FIFA World Cup 2022
+2022,2022-11-27,Group Stage,Khalifa International Stadium,Al Rayyan,Croatia,Canada,4,1,FIFA World Cup 2022
+2022,2022-11-27,Group Stage,Al Bayt Stadium,Al Khor,Spain,Germany,1,1,FIFA World Cup 2022
+2022,2022-11-28,Group Stage,Stadium 974,Doha,Cameroon,Serbia,3,3,FIFA World Cup 2022
+2022,2022-11-28,Group Stage,Lusail Stadium,Lusail,Brazil,Switzerland,1,0,FIFA World Cup 2022
+2022,2022-11-28,Group Stage,Education City Stadium,Al Rayyan,Portugal,Uruguay,2,0,FIFA World Cup 2022
+2022,2022-11-28,Group Stage,Al Janoub Stadium,Al Wakrah,Ghana,South Korea,3,2,FIFA World Cup 2022
+2022,2022-11-29,Group Stage,Al Bayt Stadium,Al Khor,Netherlands,Qatar,2,0,FIFA World Cup 2022
+2022,2022-11-29,Group Stage,Ahmad Bin Ali Stadium,Al Rayyan,Ecuador,Senegal,1,2,FIFA World Cup 2022
+2022,2022-11-29,Group Stage,Khalifa International Stadium,Al Rayyan,Wales,England,0,3,FIFA World Cup 2022
+2022,2022-11-29,Group Stage,Al Thumama Stadium,Doha,Iran,United States,0,1,FIFA World Cup 2022
+2022,2022-11-30,Group Stage,Stadium 974,Doha,Australia,Denmark,1,0,FIFA World Cup 2022
+2022,2022-11-30,Group Stage,Lusail Stadium,Lusail,Tunisia,France,1,0,FIFA World Cup 2022
+2022,2022-11-30,Group Stage,Education City Stadium,Al Rayyan,Poland,Argentina,0,2,FIFA World Cup 2022
+2022,2022-11-30,Group Stage,Al Janoub Stadium,Al Wakrah,Saudi Arabia,Mexico,1,2,FIFA World Cup 2022
+2022,2022-12-01,Group Stage,Al Bayt Stadium,Al Khor,Canada,Morocco,1,2,FIFA World Cup 2022
+2022,2022-12-01,Group Stage,Ahmad Bin Ali Stadium,Al Rayyan,Croatia,Belgium,0,0,FIFA World Cup 2022
+2022,2022-12-01,Group Stage,Khalifa International Stadium,Al Rayyan,Japan,Spain,2,1,FIFA World Cup 2022
+2022,2022-12-01,Group Stage,Al Thumama Stadium,Doha,Costa Rica,Germany,2,4,FIFA World Cup 2022
+2022,2022-12-02,Group Stage,Stadium 974,Doha,Ghana,Uruguay,0,2,FIFA World Cup 2022
+2022,2022-12-02,Group Stage,Lusail Stadium,Lusail,South Korea,Portugal,2,1,FIFA World Cup 2022
+2022,2022-12-02,Group Stage,Education City Stadium,Al Rayyan,Serbia,Switzerland,2,3,FIFA World Cup 2022
+2022,2022-12-02,Group Stage,Al Janoub Stadium,Al Wakrah,Cameroon,Brazil,1,0,FIFA World Cup 2022
+2022,2022-12-03,Round of 16,Khalifa International Stadium,Al Rayyan,Netherlands,United States,3,1,FIFA World Cup 2022
+2022,2022-12-03,Round of 16,Ahmad Bin Ali Stadium,Al Rayyan,Argentina,Australia,2,1,FIFA World Cup 2022
+2022,2022-12-04,Round of 16,Al Thumama Stadium,Doha,France,Poland,3,1,FIFA World Cup 2022
+2022,2022-12-04,Round of 16,Al Janoub Stadium,Al Wakrah,England,Senegal,3,0,FIFA World Cup 2022
+2022,2022-12-05,Round of 16,Al Bayt Stadium,Al Khor,Japan,Croatia,1,1,FIFA World Cup 2022
+2022,2022-12-05,Round of 16,Lusail Stadium,Lusail,Brazil,South Korea,4,1,FIFA World Cup 2022
+2022,2022-12-06,Round of 16,Education City Stadium,Al Rayyan,Morocco,Spain,0,0,FIFA World Cup 2022
+2022,2022-12-06,Round of 16,Stadium 974,Doha,Portugal,Switzerland,6,1,FIFA World Cup 2022
+2022,2022-12-09,Quarter-final,Lusail Stadium,Lusail,Croatia,Brazil,1,1,FIFA World Cup 2022
+2022,2022-12-09,Quarter-final,Al Bayt Stadium,Al Khor,Netherlands,Argentina,2,2,FIFA World Cup 2022
+2022,2022-12-10,Quarter-final,Khalifa International Stadium,Al Rayyan,Morocco,Portugal,1,0,FIFA World Cup 2022
+2022,2022-12-10,Quarter-final,Al Thumama Stadium,Doha,England,France,1,2,FIFA World Cup 2022
+2022,2022-12-13,Semi-final,Lusail Stadium,Lusail,Argentina,Croatia,3,0,FIFA World Cup 2022
+2022,2022-12-14,Semi-final,Al Bayt Stadium,Al Khor,France,Morocco,2,0,FIFA World Cup 2022
+2022,2022-12-17,Third Place Play-off,Khalifa International Stadium,Al Rayyan,Croatia,Morocco,2,1,FIFA World Cup 2022
+2022,2022-12-18,Final,Lusail Stadium,Lusail,Argentina,France,3,3,FIFA World Cup 2022

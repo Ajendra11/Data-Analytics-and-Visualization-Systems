@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}
+Statistics | Mini Sports Analytics Web App
+{% endblock %}
+
+{% block content %}
+
+<!-- DataTables.net Bootstrap 5 CSS & JS Dependencies -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+<!-- Custom CSS Patch: Prevents DataTables Search Box Overflow -->
+<style>
+    div.dataTables_wrapper div.dataTables_filter {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        margin-bottom: 0.75rem;
+    }
+    div.dataTables_wrapper div.dataTables_filter label {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 0 !important;
+        font-weight: 500;
+        font-size: 0.875rem;
+        white-space: nowrap;
+    }
+    div.dataTables_wrapper div.dataTables_filter input {
+        width: 120px !important; /* Constrains input field width */
+        margin-left: 0.5rem !important;
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.875rem !important;
+        border-radius: 0.375rem !important;
+    }
+</style>
+
+<div class="container my-4">
+    <h1 class="mb-2">📋 Statistical Analysis & Temporal KPIs</h1>
+    <p class="lead text-muted">
+        Review deeper statistical indicators, temporal distribution trends, and searchable team participation metrics.
+    </p>
+
+    <!-- Top Statistical Summary Cards -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm bg-primary text-white p-3">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 opacity-75">Peak Match Year</h6>
+                    <h2 class="card-title fw-bold mb-0 text-white">
+                        {{ report.temporal_kpis.peak_year if report and report.temporal_kpis else 'N/A' }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm bg-success text-white p-3">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 opacity-75">Peak Year Matches Hosted</h6>
+                    <h2 class="card-title fw-bold mb-0 text-white">
+                        {{ report.temporal_kpis.peak_matches if report and report.temporal_kpis else 0 }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm bg-dark text-white p-3">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 opacity-75">Total Tournament Years</h6>
+                    <h2 class="card-title fw-bold mb-0 text-white">
+                        {{ report.tournament_kpis.total_years if report and report.tournament_kpis else 0 }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive DataTables Row -->
+    <div class="row g-4 mb-4">
+        <!-- Matches Per Year Table -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white fw-bold py-3">
+                    📅 Matches Played per Tournament Year
+                </div>
+                <div class="card-body p-3">
+                    <table id="matchesYearTable" class="table table-hover align-middle mb-0 w-100">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Year</th>
+                                <th class="text-end">Total Matches</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if report and report.temporal_kpis and report.temporal_kpis.matches_per_year %}
+                                {% for year, count in report.temporal_kpis.matches_per_year.items() %}
+                                <tr>
+                                    <td class="fw-semibold">{{ year }}</td>
+                                    <td class="text-end">
+                                        <span class="badge bg-primary rounded-pill">{{ count }}</span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Participation Scores Table -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white fw-bold py-3">
+                    ⚽ Team Participation Scores
+                </div>
+                <div class="card-body p-3">
+                    <table id="teamParticipationTable" class="table table-hover align-middle mb-0 w-100">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Team Name</th>
+                                <th class="text-end">Participation Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if report and report.team_kpis and report.team_kpis.team_participation_score %}
+                                {% for team, score in report.team_kpis.team_participation_score.items() %}
+                                <tr>
+                                    <td class="fw-semibold">{{ team }}</td>
+                                    <td class="text-end">
+                                        <span class="badge bg-info text-white rounded-pill">{{ score }}</span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DataTables Initialization Script -->
+<script>
+    $(document).ready(function() {
+        // Initialize Matches per Year DataTable
+        $('#matchesYearTable').DataTable({
+            "pageLength": 8,
+            "lengthChange": false,
+            "order": [[ 0, "desc" ]],
+            "language": {
+                "search": "🔍 Filter Year:"
+            }
+        });
+
+        // Initialize Team Participation DataTable with Multi-Column Ordering
+        $('#teamParticipationTable').DataTable({
+            "pageLength": 8,
+            "lengthChange": false,
+            "order": [[ 1, "desc" ], [ 0, "asc" ]], // Primary: Matches DESC | Secondary: Name ASC
+            "language": {
+                "search": "🔍 Search Team:"
+            }
+        });
+    });
+</script>
+
+{% endblock %}

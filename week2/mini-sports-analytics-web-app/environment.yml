@@ -1,0 +1,31 @@
+name: sports-analytics
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.12
+
+  # Core Data Science
+  - pandas
+  - numpy
+
+  # Visualization
+  - matplotlib
+  - seaborn
+
+  # Web Framework
+  - flask
+
+  # Notebook Support
+  - jupyter
+  - notebook
+  - ipykernel
+
+  # Package Manager
+  - pip
+
+  # Optional pip packages
+  - pip:
+      - python-dotenv

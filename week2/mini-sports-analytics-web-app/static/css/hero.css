@@ -1,0 +1,343 @@
+/* ==========================================================
+   FILE: hero.css
+
+   PURPOSE
+   ----------------------------------------------------------
+   Styles the Hero section displayed on the homepage.
+
+   The Hero section is the first component users see when
+   they visit the application. Its purpose is to introduce
+   the project, communicate its objectives, and encourage
+   users to explore the analytics dashboard.
+
+   The Hero section contains:
+       • Project title
+       • Project description
+       • Call-to-action buttons
+       • Dashboard preview card
+
+   Students should learn:
+   • Responsive layouts using Bootstrap's grid system
+   • Visual hierarchy
+   • Typography
+   • Card design
+   • Hover animations
+   • Modern landing page design
+
+========================================================== */
+
+
+/* ==========================================================
+   Hero Section
+
+   Adds vertical spacing around the Hero section to create
+   breathing room and improve readability.
+========================================================== */
+
+.hero-section{
+
+    padding:100px 0;
+
+}
+
+
+/* ==========================================================
+   Hero Badge
+
+   A small label displayed above the main heading to provide
+   additional context about the project.
+========================================================== */
+
+.hero-badge{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    background:#dbeafe;
+
+    color:#2563eb;
+
+    font-weight:600;
+
+    font-size:0.9rem;
+
+}
+
+
+/* ==========================================================
+   Main Heading
+
+   The application's primary title.
+
+   Larger font sizes establish visual hierarchy and quickly
+   communicate the purpose of the dashboard.
+========================================================== */
+
+.hero-title{
+
+    font-size:3.5rem;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+    margin-top:25px;
+
+    line-height:1.2;
+
+}
+
+
+/* ==========================================================
+   Highlighted Text
+
+   Used to emphasize important words within the title.
+
+   Example:
+       Analytics Dashboard
+========================================================== */
+
+.hero-title span{
+
+    color:#2563eb;
+
+}
+
+
+/* ==========================================================
+   Hero Subtitle
+
+   A concise statement describing the application.
+========================================================== */
+
+.hero-subtitle{
+
+    font-size:1.35rem;
+
+    color:#475569;
+
+    margin-top:25px;
+
+}
+
+
+/* ==========================================================
+   Hero Description
+
+   Provides additional details about the project.
+
+   Restricting the width improves readability by preventing
+   long lines of text.
+========================================================== */
+
+.hero-description{
+
+    font-size:1.05rem;
+
+    color:#64748b;
+
+    max-width:650px;
+
+    line-height:1.8;
+
+    margin-top:25px;
+
+}
+
+
+/* ==========================================================
+   Hero Button Group
+
+   Adds spacing between the buttons and surrounding content.
+========================================================== */
+
+.hero-buttons{
+
+    margin-top:40px;
+
+}
+
+
+/* ==========================================================
+   Dashboard Preview Card
+
+   Displays a preview of the dashboard or key information.
+
+   Rounded corners, subtle shadows, and generous padding
+   create a modern card-like appearance.
+========================================================== */
+
+.hero-card{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:40px;
+
+    box-shadow:0 15px 35px rgba(15,23,42,0.08);
+
+    transition:all 0.3s ease;
+
+}
+
+
+/* ==========================================================
+   Hero Card Hover Effect
+
+   Slightly lifts the card and increases the shadow when the
+   user hovers over it.
+
+   This provides subtle visual feedback without being
+   distracting.
+========================================================== */
+
+.hero-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 25px 45px rgba(15,23,42,0.15);
+
+}
+
+
+/* ==========================================================
+   Hero Icon
+
+   Displays a large icon representing sports analytics.
+
+   The icon acts as a visual focal point within the preview
+   card.
+========================================================== */
+
+.hero-icon{
+
+    font-size:5rem;
+
+    color:#2563eb;
+
+}
+
+
+/* ==========================================================
+   Dashboard Statistics
+
+   Used for displaying small summary metrics inside the
+   preview card.
+
+   Example:
+       Dataset
+       Charts
+       Analysis
+========================================================== */
+
+.hero-stat{
+
+    text-align:center;
+
+    margin-top:25px;
+
+}
+
+
+.hero-stat h4{
+
+    font-size:1.6rem;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+}
+
+
+.hero-stat p{
+
+    margin-bottom:0;
+
+    color:#64748b;
+
+    font-size:0.9rem;
+
+}
+
+
+/* ==========================================================
+   Responsive Design
+
+   Adjust typography and spacing for tablets and mobile
+   devices.
+
+   Large headings that work well on desktop screens can
+   become difficult to read on smaller devices. Therefore,
+   the font sizes are reduced while maintaining visual
+   hierarchy.
+========================================================== */
+
+@media (max-width:991px){
+
+    .hero-section{
+
+        padding:70px 0;
+
+        text-align:center;
+
+    }
+
+    .hero-title{
+
+        font-size:2.8rem;
+
+    }
+
+    .hero-description{
+
+        margin-left:auto;
+
+        margin-right:auto;
+
+    }
+
+    .hero-card{
+
+        margin-top:50px;
+
+    }
+
+}
+
+
+@media (max-width:576px){
+
+    .hero-title{
+
+        font-size:2.2rem;
+
+    }
+
+    .hero-subtitle{
+
+        font-size:1.1rem;
+
+    }
+
+    .hero-description{
+
+        font-size:1rem;
+
+    }
+
+    .hero-buttons .btn{
+
+        display:block;
+
+        width:100%;
+
+        margin-bottom:15px;
+
+    }
+
+}

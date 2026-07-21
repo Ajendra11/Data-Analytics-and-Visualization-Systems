@@ -1,0 +1,325 @@
+/* ==========================================================
+   FILE: cards.css
+
+   PURPOSE
+   ----------------------------------------------------------
+   Defines reusable card components used throughout the
+   Mini Sports Analytics Dashboard.
+
+   Cards are one of the most common user interface (UI)
+   components in modern web applications. They group related
+   information into visually distinct containers, making the
+   interface easier to read and navigate.
+
+   This stylesheet provides a consistent appearance for all
+   cards in the application. Instead of creating separate
+   styles for each page, the same card components can be
+   reused in different contexts.
+
+   Examples include:
+
+       • Feature Cards
+       • Dashboard Cards
+       • Technology Cards
+       • Statistics Cards
+       • Dataset Summary Cards
+       • Visualization Cards
+
+   Students should learn:
+   • Component-based design
+   • Reusable CSS classes
+   • CSS transitions
+   • Visual hierarchy
+   • Consistent UI design
+
+========================================================== */
+
+
+/* ==========================================================
+   Dashboard Card
+
+   The primary reusable card component.
+
+   Every analytics module uses this card style.
+========================================================== */
+
+.dashboard-card{
+
+    background:#ffffff;
+
+    border:none;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    height:100%;
+
+    box-shadow:0 12px 30px rgba(15,23,42,.06);
+
+    transition:all .30s ease;
+
+}
+
+
+/* ==========================================================
+   Hover Effect
+
+   Creates the illusion that the card is lifting from the
+   page when hovered.
+
+   This improves user interaction while remaining subtle.
+========================================================== */
+
+.dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 25px 45px rgba(15,23,42,.12);
+
+}
+
+
+/* ==========================================================
+   Card Icon
+
+   Displays a large icon at the top of the card.
+
+   Bootstrap Icons will be used throughout the project.
+========================================================== */
+
+.card-icon{
+
+    font-size:3rem;
+
+    color:#2563eb;
+
+    margin-bottom:20px;
+
+}
+
+
+/* ==========================================================
+   Card Title
+
+   Displays the heading of the card.
+========================================================== */
+
+.card-title{
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+    margin-bottom:15px;
+
+}
+
+
+/* ==========================================================
+   Card Description
+
+   Short paragraph describing the card's purpose.
+========================================================== */
+
+.card-text{
+
+    color:#64748b;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+
+}
+
+
+/* ==========================================================
+   Card Footer
+
+   Optional area displayed at the bottom of a card.
+
+   Often used for buttons or hyperlinks.
+========================================================== */
+
+.card-footer-custom{
+
+    margin-top:auto;
+
+    border:none;
+
+    background:transparent;
+
+    padding:0;
+
+}
+
+
+/* ==========================================================
+   Card Link
+
+   Styled hyperlink displayed inside cards.
+========================================================== */
+
+.card-link{
+
+    font-weight:600;
+
+    color:#2563eb;
+
+    transition:.30s;
+
+}
+
+
+.card-link:hover{
+
+    color:#1d4ed8;
+
+    text-decoration:none;
+
+}
+
+
+/* ==========================================================
+   Card Badge
+
+   Small label displayed near the top of a card.
+
+   Useful for labels such as:
+
+       New
+       Coming Soon
+       Updated
+========================================================== */
+
+.card-badge{
+
+    display:inline-block;
+
+    background:#dbeafe;
+
+    color:#2563eb;
+
+    padding:6px 14px;
+
+    border-radius:50px;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+    margin-bottom:15px;
+
+}
+
+
+/* ==========================================================
+   Featured Card
+
+   Used when one card needs additional emphasis.
+
+   Example:
+       Featured Module
+       Recommended Analysis
+========================================================== */
+
+.card-featured{
+
+    border-top:5px solid #2563eb;
+
+}
+
+
+/* ==========================================================
+   Card Image
+
+   Ensures images fit correctly inside cards.
+========================================================== */
+
+.card-image{
+
+    width:100%;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+
+}
+
+
+/* ==========================================================
+   Card Statistics
+
+   Displays numerical information inside a card.
+========================================================== */
+
+.card-stat{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:#2563eb;
+
+}
+
+
+.card-stat-label{
+
+    font-size:.9rem;
+
+    color:#64748b;
+
+}
+
+
+/* ==========================================================
+   Card Grid
+
+   Utility class used to create responsive grids of cards.
+
+   Bootstrap already provides grid classes, but this helper
+   simplifies layouts in custom sections.
+========================================================== */
+
+.card-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+}
+
+
+/* ==========================================================
+   Responsive Design
+
+   Reduce spacing on smaller screens while maintaining
+   readability.
+========================================================== */
+
+@media (max-width:768px){
+
+    .dashboard-card{
+
+        padding:25px;
+
+    }
+
+    .card-title{
+
+        font-size:1.25rem;
+
+    }
+
+    .card-icon{
+
+        font-size:2.5rem;
+
+    }
+
+}
